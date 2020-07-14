@@ -22,6 +22,7 @@ public class CheckNewestThread extends Thread {
 				File ver_manifest = new File(folder, new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss-").format(Long.valueOf(System.currentTimeMillis())) + "version_manifest.txt");
 				VersionMirrorer.download("http://launchermeta.mojang.com/mc/game/version_manifest.json", ver_manifest);
 			}
+			lastManifest = manifest;
 
 			while (manifestIDSpending.indexOf("\"id\":") > -1) {
 				manifestIDSpending = manifestIDSpending.substring(manifestIDSpending.indexOf("\"id\": \"") + 7);
