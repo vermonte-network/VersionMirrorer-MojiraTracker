@@ -52,6 +52,8 @@ public class CheckMojiraThread extends Thread {
 			}
 			else {
 				VersionMirrorer.log("A NEW entry in Mojira has been spotted: " + id);
+				VersionMirrorer.log("Future Version, could it be a snapshot, prerelease or maybe a new release");
+				VersionMirrorer.logmojira("Future Version, could it be a snapshot, prerelease or maybe a new release");
 				VersionMirrorer.logmojira("A NEW entry in Mojira has been spotted: " + id);
 			}
 			// Logs output to main log

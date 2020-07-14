@@ -17,7 +17,8 @@ public class CheckNewestThread extends Thread {
 			String manifestIDSpending = manifest;
 			File mirrorer = new File("mirrorer/");
 			mirrorer.mkdirs();
-
+			lastManifest = manifest;
+			
 			if (!lastManifest.equals(manifest)) {
 				File folder = new File(mirrorer, "meta/");
 				folder.mkdirs();
@@ -25,10 +26,8 @@ public class CheckNewestThread extends Thread {
 				// write, not download, to save some time
 				VersionMirrorer.write(ver_manifest, new String[] {manifest}, false);
 				Files.copy(ver_manifest.toPath(), new File(folder, "latest-version_manifest.txt").toPath(), StandardCopyOption.REPLACE_EXISTING);
-				
 			} 
-			lastManifest = manifest;
-
+			
 			while (manifestIDSpending.indexOf("\"id\":") > -1) {
 				manifestIDSpending = manifestIDSpending.substring(manifestIDSpending.indexOf("\"id\": \"") + 7);
 				String version = manifestIDSpending.substring(0, manifestIDSpending.indexOf("\""));
