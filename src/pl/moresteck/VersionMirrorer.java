@@ -10,7 +10,7 @@ public class VersionMirrorer {
 	public static boolean yes = true;
 
 	public static void main(String[] args) {
-		log("VersionMirrorer v1.0.1 by Moresteck (2020-06-04)");
+		log("VersionMirrorer v1.0.2 by Moresteck (2020-06-04)");
 		while (yes) {
 			Thread check = new CheckNewestThread();
 			check.start();
