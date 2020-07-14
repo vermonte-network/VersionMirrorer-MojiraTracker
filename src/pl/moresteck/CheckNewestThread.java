@@ -16,7 +16,7 @@ public class CheckNewestThread extends Thread {
 			File mirrorer = new File("mirrorer/");
 			mirrorer.mkdirs();
 
-			if (lastManifest.equals(manifest)) {
+			if (!lastManifest.equals(manifest)) {
 				File folder = new File(mirrorer, "meta/");
 				folder.mkdirs();
 				File ver_manifest = new File(folder, new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss-").format(Long.valueOf(System.currentTimeMillis())) + "version_manifest.txt");

@@ -14,7 +14,7 @@ public class VersionMirrorer {
 	public static boolean yes = true;
 
 	public static void main(String[] args) {
-		log("VersionMirrorer v1.0.6 by Moresteck & DireMaster (2020-06-23) fired up!");
+		log("VersionMirrorer v1.0.6.1 by Moresteck & DireMaster (2020-06-23) fired up!");
 		while (yes) {
 			Thread check = new CheckNewestThread();
 			check.start();
