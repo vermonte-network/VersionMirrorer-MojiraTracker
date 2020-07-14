@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class CheckNewestThread extends Thread {
+	String lastManifest = "";
 
 	@Override
 	public void run() {
@@ -14,10 +15,14 @@ public class CheckNewestThread extends Thread {
 			String manifestIDSpending = manifest;
 			File mirrorer = new File("mirrorer/");
 			mirrorer.mkdirs();
-			File folder = new File(mirrorer, "meta/");
-			folder.mkdirs();
-			File ver_manifest = new File(folder, new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss-").format(Long.valueOf(System.currentTimeMillis())) + "version_manifest.txt");
-			VersionMirrorer.download("http://launchermeta.mojang.com/mc/game/version_manifest.json", ver_manifest);
+
+			if (lastManifest.equals(manifest)) {
+				File folder = new File(mirrorer, "meta/");
+				folder.mkdirs();
+				File ver_manifest = new File(folder, new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss-").format(Long.valueOf(System.currentTimeMillis())) + "version_manifest.txt");
+				VersionMirrorer.download("http://launchermeta.mojang.com/mc/game/version_manifest.json", ver_manifest);
+			}
+
 			while (manifestIDSpending.indexOf("\"id\":") > -1) {
 				manifestIDSpending = manifestIDSpending.substring(manifestIDSpending.indexOf("\"id\": \"") + 7);
 				String version = manifestIDSpending.substring(0, manifestIDSpending.indexOf("\""));
