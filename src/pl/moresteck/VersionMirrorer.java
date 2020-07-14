@@ -3,9 +3,9 @@ package pl.moresteck;
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 
@@ -14,11 +14,11 @@ public class VersionMirrorer {
 	public static boolean yes = true;
 
 	public static void main(String[] args) {
-		log("VersionMirrorer v1.0.4 by Moresteck (2020-06-04)");
+		log("VersionMirrorer v1.0.5 by Moresteck & DireMaster (2020-06-23) fired up!");
 		while (yes) {
 			Thread check = new CheckNewestThread();
 			check.start();
-			
+
 			try {
 				Thread.sleep(10000);
 				while (check.isAlive());
@@ -47,7 +47,7 @@ public class VersionMirrorer {
 			e.printStackTrace();
 		}
 	}
-	    
+
 	public static boolean download(String link, File toFile) {
 		try {
 			toFile.createNewFile();
