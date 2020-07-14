@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class CheckNewestThread extends Thread {
-	String lastManifest = "";
+	public static String lastManifest = "";
 
 	@Override
 	public void run() {
