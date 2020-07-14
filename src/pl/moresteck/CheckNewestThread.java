@@ -23,12 +23,13 @@ public class CheckNewestThread extends Thread {
 				String fromclientlink = jsunfromclient.substring(jsunfromclient.indexOf("\"url\": \"") + 8);
 				String clientlink = fromclientlink.substring(0, fromclientlink.indexOf("\""));
 
-				File jsonfolder = new File("mirrorer/" + jsonlink.substring(44, 85));
+				String jsonhashpath = "mirrorer/" + jsonlink.substring(44, 85);
+				File jsonfolder = new File(jsonhashpath);
 				//VersionMirrorer.log(jsonfolder.toPath().toString());
 				jsonfolder.mkdir();
 
 				File clientToFile = new File(jsonfolder, clientlink.substring(39, 79) + "-client.jar");
-				File jsunToFile = new File(jsonfolder, jsonfolder.toPath().toString() + ".json");
+				File jsunToFile = new File(jsonfolder, jsonhashpath + ".json");
 
 				if (!clientToFile.exists()) {
 					VersionMirrorer.log("Downloading client for version " + version + " - " + clientToFile.toPath().toString());
