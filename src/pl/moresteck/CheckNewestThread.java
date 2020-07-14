@@ -24,7 +24,7 @@ public class CheckNewestThread extends Thread {
 				String clientlink = fromclientlink.substring(0, fromclientlink.indexOf("\""));
 
 				File jsonfolder = new File(jsonlink.substring(44, 85));
-				VersionMirrorer.log(jsonfolder.toPath().toString());
+				//VersionMirrorer.log(jsonfolder.toPath().toString());
 				jsonfolder.mkdir();
 
 				File clientToFile = new File(jsonfolder, clientlink.substring(39, 79) + "-client.jar");
@@ -85,7 +85,7 @@ public class CheckNewestThread extends Thread {
 				}
 
 				if (serverwindowslink != null) {
-					File serverWindowsToFile = new File(jsonfolder, serverwindowslink.substring(39, 79) + "-server.exe");
+					File serverWindowsToFile = new File(jsonfolder, serverwindowslink.substring(39, 79) + "-windows_server.exe");
 					if (!serverWindowsToFile.exists()) {
 						VersionMirrorer.log("Downloading windows server for version " + version + " - " + serverWindowsToFile.toPath().toString());
 						VersionMirrorer.download(serverwindowslink, serverWindowsToFile);
