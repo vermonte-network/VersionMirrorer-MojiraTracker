@@ -40,8 +40,6 @@ public class CheckMojiraThread extends Thread {
 			lastname = lastname.substring(0, lastname.indexOf("\","));
 		}
 		
-        System.out.println(id);
-		
         if (!lastSelf.equals(lastMojiraJEcontent)) {
 			if (lastid.equals(id)) {
 				VersionMirrorer.log("A change in Mojira has been spotted: " + id);
