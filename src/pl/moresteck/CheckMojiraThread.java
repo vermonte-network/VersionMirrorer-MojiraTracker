@@ -32,15 +32,25 @@ public class CheckMojiraThread extends Thread {
 		} 
 
 		String lastid = "";
+		String lastname = "";
 		if (!lastMojiraJEcontent.equals("")) {
 			lastid = lastMojiraJEcontent.substring(lastMojiraJEcontent.indexOf("\"id\":") + 5 + 1, lastMojiraJEcontent.length());
 			lastid = lastid.substring(0, lastid.indexOf("\","));
-		} 
-
-		if (!lastSelf.equals(lastMojiraJEcontent)) {
+			lastname = lastMojiraJEcontent.substring(lastMojiraJEcontent.indexOf("\"name\":") + 7 + 1, lastMojiraJEcontent.length());
+			lastname = lastname.substring(0, lastname.indexOf("\","));
+		}
+		
+        System.out.println(id);
+		
+        if (!lastSelf.equals(lastMojiraJEcontent)) {
 			if (lastid.equals(id)) {
 				VersionMirrorer.log("A change in Mojira has been spotted: " + id);
 				VersionMirrorer.logmojira("A change in Mojira has been spotted: " + id);
+				if (!lastname.equals(name)) {
+					VersionMirrorer.log(lastname + " was renamed to " + name);
+					VersionMirrorer.logmojira(lastname + " was renamed to " + name);
+				}
+				
 				if (released.equals("true")) {
 					VersionMirrorer.log("Oh Boy, a new version has been released");
 					VersionMirrorer.logmojira("Oh Boy, a new version has been released");
